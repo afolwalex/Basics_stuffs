@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import DataGrid from "./DataGrid";
+import data from "./data";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const headers = ["header1", "header2", "header3", "header4"];
+
+	const [expand, setExpand] = useState(false);
+
+	return (
+		<div className="container">
+			<button onClick={() => setExpand(!expand)}>Expand All</button>
+			<DataGrid headers={headers} columns={data} expand={expand} />
+		</div>
+	);
 }
 
 export default App;
